@@ -1,5 +1,5 @@
 streamlit
 pandas
 os
-#google.generativeai
+google.generativeai
 genai
