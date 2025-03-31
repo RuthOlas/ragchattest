@@ -3,8 +3,15 @@ import pandas as pd
 import os
 import google.generativeai as genai
 
+
+
+api_key = st.secrets["api_keys"]["GOOGLE_API_KEY"]
+st.write("Your API key is:", api_key)
+
+
+
 # Set up the API key
-GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY', st.secrets.get("GOOGLE_API_KEY"))
+#GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY', st.secrets.get("GOOGLE_API_KEY"))
 genai.configure(api_key=GOOGLE_API_KEY)
 
 # Function to generate response from the model
