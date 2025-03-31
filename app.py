@@ -11,15 +11,19 @@ st.write("Your API key is:", api_key)
 
 
 # Set up the API key
+genai.configure(api_key=api_key)
+
 #GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY', st.secrets.get("GOOGLE_API_KEY"))
-genai.configure(api_key=GOOGLE_API_KEY)
+#genai.configure(api_key=GOOGLE_API_KEY)
 
 # Function to generate response from the model
 def generate_response(prompt, context):
     try:
-        model = genai.GenerativeModel('gemini-pro')
+        #model = genai.GenerativeModel('gemini-pro')
         # Include context from uploaded data in the prompt
-        response = model.generate_content(f"{prompt}\n\nContext:\n{context}")
+        #response = model.generate_content(f"{prompt}\n\nContext:\n{context}")
+        response = genai.generate_text(prompt=f"{prompt}\n\nContext:\n{context}")
+
         return response.text  # Use 'text' attribute
     except Exception as e:
         st.error(f"Error generating response: {e}")
