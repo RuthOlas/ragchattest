@@ -11,7 +11,7 @@ genai.configure(api_key=api_key)
 
 # Load your dataset (Replace 'your_dataframe' with your actual DataFrame)
 df1 = pd.read_csv("Food Hampers.csv")
-df2 = pd.read_csv("Clients Data Dimension")
+df2 = pd.read_csv("Clients Data Dimension.csv")
 
 # Function to generate response from the model
 def generate_response(prompt, context):
