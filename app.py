@@ -12,6 +12,22 @@ genai.configure(api_key=api_key)
 # Loading dataset 
 df1 = pd.read_csv("df.csv")
 
+# Function to extract text from a preloaded PDF
+def extract_text_from_pdf(pdf_path):
+    text = ""
+    try:
+        with open(pdf_path, "rb") as pdf_file:
+            reader = PyPDF2.PdfReader(pdf_file)
+            for page in reader.pages:
+                text += page.extract_text() + "\n"
+    except Exception as e:
+        st.error(f"Error reading PDF: {e}")
+    return text
+
+# Preload the PDF
+pdf_path = "IFSSA and Insights"  # Update with your actual PDF file
+pdf_text = extract_text_from_pdf(pdf_path)
+
 
 # Function to generate response from the model
 def generate_response(prompt, context):
@@ -30,7 +46,7 @@ def main():
 
     # Create context from dataset
     context = "\nDataset 1 Preview:\n" + df1.head(5).to_string()
-    
+    context += "\n\nPDF Content:\n" + pdf_text[:2000]  # Limit text for efficiency
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
 
