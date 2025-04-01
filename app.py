@@ -13,7 +13,7 @@ genai.configure(api_key=api_key)
 def generate_response(prompt, context):
     try:
         # Initialize GenerativeModel
-        model = genai.GenerativeModel('gemini-pro')  # You can replace 'gemini-pro' with the model you want to use
+        model = genai.GenerativeModel('models/gemini-1.5-pro-latest')  # You can replace 'gemini-pro' with the model you want to use
         # Generate a response from the model
         response = model.generate_content(f"{prompt}\n\nContext:\n{context}")
         return response.text  # Use 'text' attribute for response
