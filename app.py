@@ -9,11 +9,15 @@ api_key = st.secrets["api_keys"]["GOOGLE_API_KEY"]
 # Configure the API key
 genai.configure(api_key=api_key)
 
+# Load your dataset (Replace 'your_dataframe' with your actual DataFrame)
+df1 = pd.read_csv("Food Hampers.csv")
+df2 = pd.read_csv("Clients Data Dimension")
+
 # Function to generate response from the model
 def generate_response(prompt, context):
     try:
         # Initialize GenerativeModel
-        model = genai.GenerativeModel('models/gemini-1.5-pro-latest')  # You can replace 'gemini-pro' with the model you want to use
+        model = genai.GenerativeModel('models/gemini-1.5-pro-latest')  
         # Generate a response from the model
         response = model.generate_content(f"{prompt}\n\nContext:\n{context}")
         return response.text  # Use 'text' attribute for response
@@ -23,45 +27,26 @@ def generate_response(prompt, context):
 
 # Streamlit app
 def main():
-    st.title("Project-Specific Chatbot")
-    st.write("Upload project-related files and ask questions based on the data.")
+    st.title("IFSSA Retention Chatbot")
+    st.write("Ask questions based on our datasets.")
 
-    # File upload
-    uploaded_files = st.file_uploader("Upload your project files (CSV/Excel)", type=["csv", "xlsx"], accept_multiple_files=True)
-
-    # Prepare data context
-    dataframes = {}
-    if uploaded_files:
-        for file in uploaded_files:
-            try:
-                if file.name.endswith('.csv'):
-                    dataframes[file.name] = pd.read_csv(file)
-                elif file.name.endswith('.xlsx'):
-                    dataframes[file.name] = pd.read_excel(file)
-                st.success(f"Successfully loaded {file.name}")
-            except Exception as e:
-                st.error(f"Error loading {file.name}: {e}")
-
-    # Create context from data
-    context = ""
-    for file_name, df in dataframes.items():
-        context += f"\nData from {file_name}:\n"
-        context += df.head(5).to_string()  # Include a preview of the data (first 5 rows)
+    # Create context from your datasets
+    context = "\nDataset 1 Preview:\n" + df1.head(5).to_string()
+    context += "\n\nDataset 2 Preview:\n" + df2.head(5).to_string()
 
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
 
-    user_input = st.text_input("Ask a question about your project:", key="input")
+    user_input = st.text_input("Ask a question about your data:", key="input")
     if st.button("Send"):
-        if user_input and context:
+        if user_input:
             st.session_state.chat_history.append({"role": "user", "content": user_input})
             response = generate_response(user_input, context)
             st.session_state.chat_history.append({"role": "assistant", "content": response})
-        elif not context:
-            st.error("Please upload relevant files to ask project-specific questions.")
 
     for message in st.session_state.chat_history:
         st.write(f"{message['role'].capitalize()}: {message['content']}")
 
 if __name__ == "__main__":
     main()
+
