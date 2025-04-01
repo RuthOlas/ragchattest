@@ -5,4 +5,4 @@ markdown-it-py
 mdurl
 pygments
 rich
-
+PyPDF2
