@@ -1,6 +1,9 @@
+pip install PyPDF2
+
 import streamlit as st
 import pandas as pd
 import google.generativeai as genai
+import PyPDF2
 
 # Access the API key from Streamlit secrets
 api_key = st.secrets["api_keys"]["GOOGLE_API_KEY"]
