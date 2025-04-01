@@ -10,8 +10,8 @@ api_key = st.secrets["api_keys"]["GOOGLE_API_KEY"]
 genai.configure(api_key=api_key)
 
 # Load your dataset (Replace 'your_dataframe' with your actual DataFrame)
-df1 = pd.read_csv("Food Hampers.csv")
-df2 = pd.read_csv("Clients Data Dimension.csv")
+df1 = pd.read_csv("df.csv")
+
 
 # Function to generate response from the model
 def generate_response(prompt, context):
@@ -29,10 +29,9 @@ def main():
     st.write("Ask questions based on your datasets.")
 
     # Create context from your datasets
-    context = "\nDataset 1 Preview:\n" + df1.head(5).to_string()
-    context += "\n\nDataset 2 Preview:\n" + df2.head(5).to_string()
-
-    if "chat_history" not in st.session_state:
+    context = "\nDataset 1 Preview:\n" + df.head(5).to_string()
+    
+ if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
 
     user_input = st.text_input("Ask a question about your data:", key="input")
