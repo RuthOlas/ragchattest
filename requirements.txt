@@ -1,8 +1,17 @@
 streamlit
 pandas
+joblib
 google-generativeai==0.8.4
 markdown-it-py
 mdurl
 pygments
 rich
 PyPDF2
+numpy
+matplotlib
+plotly
+scikit-learn
+shap
+PyPDF2
+
+
