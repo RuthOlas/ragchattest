@@ -4,7 +4,7 @@ import google.generativeai as genai
 
 # Access the API key from Streamlit secrets
 api_key = st.secrets["api_keys"]["GOOGLE_API_KEY"]
-st.write("Your API key is:", api_key)
+#st.write("Your API key is:", api_key)
 
 # Configure the API key
 genai.configure(api_key=api_key)
