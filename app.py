@@ -1,30 +1,22 @@
 import streamlit as st
 import pandas as pd
-import os
 import google.generativeai as genai
 
-
-
+# Access the API key from Streamlit secrets
 api_key = st.secrets["api_keys"]["GOOGLE_API_KEY"]
 st.write("Your API key is:", api_key)
 
-
-
-# Set up the API key
+# Configure the API key
 genai.configure(api_key=api_key)
-
-#GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY', st.secrets.get("GOOGLE_API_KEY"))
-#genai.configure(api_key=GOOGLE_API_KEY)
 
 # Function to generate response from the model
 def generate_response(prompt, context):
     try:
-        #model = genai.GenerativeModel('gemini-pro')
-        # Include context from uploaded data in the prompt
-        #response = model.generate_content(f"{prompt}\n\nContext:\n{context}")
-        response = genai.generate_text(prompt=f"{prompt}\n\nContext:\n{context}")
-
-        return response.text  # Use 'text' attribute
+        # Initialize GenerativeModel
+        model = genai.GenerativeModel('gemini-pro')  # You can replace 'gemini-pro' with the model you want to use
+        # Generate a response from the model
+        response = model.generate_content(f"{prompt}\n\nContext:\n{context}")
+        return response.text  # Use 'text' attribute for response
     except Exception as e:
         st.error(f"Error generating response: {e}")
         return "Sorry, I couldn't process your request."
