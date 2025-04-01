@@ -29,7 +29,7 @@ def main():
     st.write("Ask questions based on your datasets.")
 
     # Create context from dataset
-    context = "\nDataset 1 Preview:\n" + df.head(5).to_string()
+    context = "\nDataset 1 Preview:\n" + df1.head(5).to_string()
     
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
