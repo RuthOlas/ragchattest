@@ -9,7 +9,7 @@ api_key = st.secrets["api_keys"]["GOOGLE_API_KEY"]
 # Configure the API key
 genai.configure(api_key=api_key)
 
-# Load your dataset (Replace 'your_dataframe' with your actual DataFrame)
+# Loading dataset 
 df1 = pd.read_csv("df.csv")
 
 
@@ -28,13 +28,13 @@ def main():
     st.title("IFSA Retention Chatbot")
     st.write("Ask questions based on your datasets.")
 
-    # Create context from your datasets
+    # Create context from dataset
     context = "\nDataset 1 Preview:\n" + df.head(5).to_string()
     
  if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
 
-    user_input = st.text_input("Ask a question about your data:", key="input")
+    user_input = st.text_input("Ask a question about our data:", key="input")
     if st.button("Send"):
         if user_input:
             st.session_state.chat_history.insert(0, {"role": "user", "content": user_input})
