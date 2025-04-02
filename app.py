@@ -350,54 +350,44 @@ def chatbox():
 
     # Function to generate response from the model
     def generate_response(prompt, context):
-        try:
-            model = genai.GenerativeModel('models/gemini-1.5-pro-latest')
-            # Remove explicit source references from context if necessary
-            cleaned_context = context.replace("PDF Content:", "").replace("Dataset 1 Preview:", "")
-            # Generate content based on the cleaned context
-            response = model.generate_content(f"{prompt}\n\nContext:\n{cleaned_context}")
-            return response.text
-        except Exception as e:
-            st.error(f"Error generating response: {e}")
-            return "Sorry, I couldn't process your request."
+    try:
+        model = genai.GenerativeModel('models/gemini-1.5-pro-latest')
+        # Remove explicit source references from context if necessary
+        cleaned_context = context.replace("PDF Content:", "").replace("Dataset 1 Preview:", "")
+        # Generate content based on the cleaned context
+        response = model.generate_content(f"{prompt}\n\nContext:\n{cleaned_context}")
+        return response.text
+    except Exception as e:
+        st.error(f"Error generating response: {e}")
+        return "Sorry, I couldn't process your request."
 
-    #st.markdown("""
-     #   <style>
-      #  .stApp {
-       #     #background-color: #ffffff;
-        #    background-color: #E09965
-         #   color: #333333;
-    st.markdown("""
-        <style>
-        .stApp {
-            background-color: #E09965;
-            color: #333333;
-        }
-        </style>
-        """, unsafe_allow_html=True)
+st.markdown("""
+    <style>
+    .stApp {
+        background-color: #E09965;
+        color: #333333;
+    }
+    .stTextInput, .stButton {
+        background-color: #4caf50;
+        color: white;
+    }
+    .stTitle, .stHeader, .stText {
+        color: #4caf50;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
-        
-        .stTextInput, .stButton {
-            background-color: #4caf50;
-            color: white;
-        }
-        .stTitle, .stHeader, .stText {
-            color: #4caf50;
-        }
-        </style>
-    """, unsafe_allow_html=True)
+st.markdown('<h1 style="color:lightorange; font-size: 2.5em;">IFSSA Retention Chatbot</h1>', unsafe_allow_html=True)
+# st.title("IFSSA Retention Chatbot")
+st.write("Ask questions based on your datasets.")
 
-    st.markdown('<h1 style="color:light orange; font-size: 2.5em;">IFSSA Retention Chatbot</h1>', unsafe_allow_html=True)
-    #st.title("IFSSA Retention Chatbot")
-    st.write("Ask questions based on your datasets.")
+# Create context from dataset
+context = "\nDataset 1 Preview:\n" + df1.head(5).to_string()
+context += "\n\nPDF Content:\n" + pdf_text[:2000]  # Limit text for efficiency
 
-    # Create context from dataset
-    context = "\nDataset 1 Preview:\n" + df1.head(5).to_string()
-    context += "\n\nPDF Content:\n" + pdf_text[:2000]  # Limit text for efficiency
-
-    # Initialize chat history if not already initialized
-    if "chat_history" not in st.session_state:
-        st.session_state.chat_history = []
+# Initialize chat history if not already initialized
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
 
     # User input
     user_input = st.text_input("Ask a question about our data:", key="input")
