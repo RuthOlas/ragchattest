@@ -376,7 +376,7 @@ def chatbox():
         </style>
         """, unsafe_allow_html=True)
 
-        }
+        
         .stTextInput, .stButton {
             background-color: #4caf50;
             color: white;
