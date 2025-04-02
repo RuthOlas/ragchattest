@@ -356,6 +356,22 @@ def chatbox():
             st.error(f"Error generating response: {e}")
             return "Sorry, I couldn't process your request."
 
+    st.markdown("""
+        <style>
+        .stApp {
+            background-color: #ffffff;
+            color: #333333;
+        }
+        .stTextInput, .stButton {
+            background-color: #4caf50;
+            color: white;
+        }
+        .stTitle, .stHeader, .stText {
+            color: #4caf50;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
     st.title("IFSSA Retention Chatbot")
     st.write("Ask questions based on your datasets.")
 
