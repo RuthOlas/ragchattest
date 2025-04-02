@@ -20,7 +20,12 @@ genai.configure(api_key=api_key)
 df1 = pd.read_csv("df.csv")  # Update with your actual dataset file
 
 
-st.markdown('<h1 style="color:green;">Hamper Return Prediction App</h1>', unsafe_allow_html=True)
+st.markdown('<h1 style="color:green; font-size: 2.5em;">Hamper Return Prediction App</h1>', unsafe_allow_html=True)
+# Set the title in green with a larger font size
+
+
+# Your app logic here
+st.write("Welcome to the Hamper Return Prediction App!")
 
 # Function to extract text from a preloaded PDF
 def extract_text_from_pdf(pdf_path):
@@ -407,7 +412,7 @@ def dashboard():
     header_image_url = "https://raw.githubusercontent.com/ChiomaUU/Client-Prediction/refs/heads/main/ifssa_2844cc71-4dca-48ae-93c6-43295187e7ca.avif"
     st.image(header_image_url, use_container_width=True)
 
-    st.title("Hamper Return Prediction App")
+    #st.title("Hamper Return Prediction App")
     st.write("This app predicts whether a client will return for food hampers using machine learning.")
     
     st.markdown("""
