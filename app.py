@@ -264,7 +264,8 @@ def show_confidence_analysis(probability):
         st.write("The model has moderate confidence. Consider verifying with additional client information.")
 
 def predictions_page():
-    st.title("Hamper Return Prediction App")
+    st.markdown('<h1 style="color:#275D43; font-size: 2.5em;">Hamper Return Prediction</h1>', unsafe_allow_html=True)
+    #st.title("Hamper Return Prediction App")
     st.write("Enter details to predict if a client will return.")
     
     # User input fields
@@ -328,6 +329,8 @@ def predictions_page():
                 """)
 def chatbox():
     # Function to extract text from a preloaded PDF
+    
+ 
     def extract_text_from_pdf(pdf_path):
         text = ""
         try:
@@ -358,7 +361,8 @@ def chatbox():
             st.error(f"Error generating response: {e}")
             return "Sorry, I couldn't process your request."
 
-    st.title("IFSSA Retention Chatbot")
+    #st.title("IFSSA Retention Chatbot")
+    st.markdown('<h1 style="color:#E09963; font-size: 2.5em;">IFSSA Retention Chatbot</h1>', unsafe_allow_html=True)
     st.write("Ask questions based on your datasets.")
 
     # Create context from dataset
@@ -387,7 +391,7 @@ def chatbox():
         st.write(f"**{message['role'].capitalize()}**: {message['content']}")
 
 def dashboard():
-    st.markdown('<h1 style="color:#FFA500; font-size: 2.5em;">Hamper Return Prediction App</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="color:#275D43; font-size: 2.5em;">Hamper Return Prediction App</h1>', unsafe_allow_html=True)
     header_image_url = "https://raw.githubusercontent.com/ChiomaUU/Client-Prediction/refs/heads/main/ifssa_2844cc71-4dca-48ae-93c6-43295187e7ca.avif"
     st.image(header_image_url, use_container_width=True)
 
