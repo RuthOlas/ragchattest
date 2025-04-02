@@ -408,7 +408,7 @@ def dashboard():
     """)
     
     st.markdown("""
-    st.markdown('<h1 style="color:#275D43; ">How It Works</h1>', unsafe_allow_html=True)
+ 
     ### How It Works:
     1. Navigate to the **Predictions** page
     2. Enter client details
