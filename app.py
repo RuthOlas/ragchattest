@@ -437,7 +437,7 @@ def main():
     
     /* Change the background color of the radio button options */
     .stRadio>div>label {
-        background-color: #333333;  /* Change this to your desired color */
+        background-color: #4caf50;  /* Change this to your desired color */
     }
     </style>
 """, unsafe_allow_html=True)
