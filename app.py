@@ -19,6 +19,9 @@ genai.configure(api_key=api_key)
 # Loading dataset
 df1 = pd.read_csv("df.csv")  # Update with your actual dataset file
 
+
+st.markdown('<h1 style="color:green;">Hamper Return Prediction App</h1>', unsafe_allow_html=True)
+
 # Function to extract text from a preloaded PDF
 def extract_text_from_pdf(pdf_path):
     text = ""
