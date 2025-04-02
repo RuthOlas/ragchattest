@@ -361,12 +361,21 @@ def chatbox():
             st.error(f"Error generating response: {e}")
             return "Sorry, I couldn't process your request."
 
+    #st.markdown("""
+     #   <style>
+      #  .stApp {
+       #     #background-color: #ffffff;
+        #    background-color: #E09965
+         #   color: #333333;
     st.markdown("""
         <style>
         .stApp {
-            #background-color: #ffffff;
-            background-color: #E09965
+            background-color: #E09965;
             color: #333333;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
         }
         .stTextInput, .stButton {
             background-color: #4caf50;
