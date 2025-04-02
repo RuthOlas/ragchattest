@@ -364,7 +364,7 @@ def chatbox():
 st.markdown("""
     <style>
     .stApp {
-        background-color: #E09965;
+        background-color: #FEFFFF;
         color: #333333;
     }
     .stTextInput, .stButton {
