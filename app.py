@@ -416,9 +416,35 @@ def dashboard():
     """)
 
 def main():
-    st.sidebar.title("Navigation")
-    app_page = st.sidebar.radio("Choose a page", ["Dashboard", "Insights", "Predictions", "Chatbox"])
+    #st.sidebar.title("Navigation")
+    #app_page = st.sidebar.radio("Choose a page", ["Dashboard", "Insights", "Predictions", "Chatbox"])
+    st.markdown("""
+    <style>
+    /* Change sidebar background color */
+    .css-18e3th9 {
+        background-color: #4caf50;  /* Change this to your desired color */
+    }
     
+    /* Change the title color of the sidebar */
+    .css-1v0mbdj {
+        color: green;  /* Change this to your desired color */
+    }
+    
+    /* Change the color of radio button options */
+    .stRadio label {
+        color: white;  /* Change this to your desired color */
+    }
+    
+    /* Change the background color of the radio button options */
+    .stRadio>div>label {
+        background-color: #333333;  /* Change this to your desired color */
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+  st.sidebar.title("Navigation")
+  app_page = st.sidebar.radio("Choose a page", ["Dashboard", "Insights", "Predictions", "Chatbox"])
+
     # Debug toggle
     if st.sidebar.checkbox("Debug mode"):
         st.session_state.debug = True
