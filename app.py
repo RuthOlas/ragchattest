@@ -104,7 +104,8 @@ def preprocess_input(input_data):
     return input_df
 
 def exploratory_data_analysis():
-    st.title("Hamper Collection Insights")
+    st.markdown('<h1 style="color:brown; font-size: 2.5em;">Hamper Collection Insights</h1>', unsafe_allow_html=True)
+    #st.title("Hamper Collection Insights")
     st.subheader("Power BI Visualization")
     powerbi_url = "https://app.powerbi.com/view?r=eyJrIjoiMTE4Y2JiYWQtMzNhYS00NGFiLThmMDQtMmIwMDg4YTIzMjI5IiwidCI6ImUyMjhjM2RmLTIzM2YtNDljMy05ZDc1LTFjZTI4NWI1OWM3OCJ9"
     st.components.v1.iframe(powerbi_url, width=800, height=600)
@@ -263,7 +264,8 @@ def show_confidence_analysis(probability):
         st.write("The model has moderate confidence. Consider verifying with additional client information.")
 
 def predictions_page():
-    st.title("Hamper Return Prediction App")
+    st.markdown('<h1 style="color:green; font-size: 2.5em;">Hamper Return Prediction App</h1>', unsafe_allow_html=True)
+    #st.title("Hamper Return Prediction App")
     st.write("Enter details to predict if a client will return.")
     
     # User input fields
