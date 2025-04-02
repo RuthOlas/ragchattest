@@ -427,7 +427,7 @@ def main():
     
     /* Change the title color of the sidebar */
     .sidebar .sidebar-content .block-container {
-        color: black;  /* Change this to your desired color */
+        color: green;  /* Change this to your desired color */
     }
     
     /* Change the color of radio button options */
