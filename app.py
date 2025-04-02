@@ -427,7 +427,7 @@ def main():
     
     /* Change the title color of the sidebar */
     .css-1v0mbdj {
-        color: green;  /* Change this to your desired color */
+        color: black;  /* Change this to your desired color */
     }
     
     /* Change the color of radio button options */
