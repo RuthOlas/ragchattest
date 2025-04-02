@@ -435,10 +435,10 @@ def main():
         color: white;  /* Change this to your desired color */
     }
     
-    /* Change the background color of the radio button options */
-    .stRadio>div>label {
-        background-color: #4caf50;  /* Change this to your desired color */
-    }
+    #/* Change the background color of the radio button options */
+    #.stRadio>div>label {
+     #   background-color: #4caf50;  /* Change this to your desired color */
+    #}
     </style>
 """, unsafe_allow_html=True)
 
