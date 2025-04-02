@@ -442,8 +442,8 @@ def main():
     </style>
 """, unsafe_allow_html=True)
 
-  st.sidebar.title("Navigation")
-  app_page = st.sidebar.radio("Choose a page", ["Dashboard", "Insights", "Predictions", "Chatbox"])
+    st.sidebar.title("Navigation")
+    app_page = st.sidebar.radio("Choose a page", ["Dashboard", "Insights", "Predictions", "Chatbox"])
 
     # Debug toggle
     if st.sidebar.checkbox("Debug mode"):
