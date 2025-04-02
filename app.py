@@ -387,7 +387,7 @@ def chatbox():
         st.write(f"**{message['role'].capitalize()}**: {message['content']}")
 
 def dashboard():
-    st.markdown('<h1 style="color:dark green; font-size: 2.5em;">Hamper Return Prediction App</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="color:#FFA500; font-size: 2.5em;">Hamper Return Prediction App</h1>', unsafe_allow_html=True)
     header_image_url = "https://raw.githubusercontent.com/ChiomaUU/Client-Prediction/refs/heads/main/ifssa_2844cc71-4dca-48ae-93c6-43295187e7ca.avif"
     st.image(header_image_url, use_container_width=True)
 
