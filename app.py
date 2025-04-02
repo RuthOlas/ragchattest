@@ -426,7 +426,7 @@ def main():
     }
     
     /* Change the title color of the sidebar */
-    .css-1v0mbdj {
+    .sidebar .sidebar-content .block-container {
         color: black;  /* Change this to your desired color */
     }
     
