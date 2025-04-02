@@ -356,7 +356,7 @@ st.markdown("""
         color: #4caf50;
     }
     .page-title {
-        color: lightorange;
+        color: lightgreen;
         font-size: 2.5em;
     }
     </style>
