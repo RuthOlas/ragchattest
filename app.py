@@ -361,25 +361,25 @@ def chatbox():
             st.error(f"Error generating response: {e}")
             return "Sorry, I couldn't process your request."
 
-        st.markdown("""
-            <style>
-            .stApp {
-                background-color: #FEFFFF;
-                color: #333333;
-            }
-            .stTextInput, .stButton {
-                background-color: #4caf50;
-                color: white;
-            }
-            .stTitle, .stHeader, .stText {
-                color: #4caf50;
-            }
-            </style>
-        """, unsafe_allow_html=True)
-            
-            st.markdown('<h1 style="color:lightorange; font-size: 2.5em;">IFSSA Retention Chatbot</h1>', unsafe_allow_html=True)
-            st.title("IFSSA Retention Chatbot")
-            st.write("Ask questions based on your datasets.")
+    st.markdown("""
+        <style>
+        .stApp {
+            background-color: #FEFFFF;
+            color: #333333;
+        }
+        .stTextInput, .stButton {
+            background-color: #4caf50;
+            color: white;
+        }
+        .stTitle, .stHeader, .stText {
+            color: #4caf50;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+        
+        st.markdown('<h1 style="color:lightorange; font-size: 2.5em;">IFSSA Retention Chatbot</h1>', unsafe_allow_html=True)
+        st.title("IFSSA Retention Chatbot")
+        st.write("Ask questions based on your datasets.")
 
 # Create context from dataset
 context = "\nDataset 1 Preview:\n" + df1.head(5).to_string()
