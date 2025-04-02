@@ -104,7 +104,7 @@ def preprocess_input(input_data):
     return input_df
 
 def exploratory_data_analysis():
-    st.markdown('<h1 style="color:brown; font-size: 2.5em;">Hamper Collection Insights</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="color:light orange; font-size: 2.5em;">Hamper Collection Insights</h1>', unsafe_allow_html=True)
     #st.title("Hamper Collection Insights")
     st.subheader("Power BI Visualization")
     powerbi_url = "https://app.powerbi.com/view?r=eyJrIjoiMTE4Y2JiYWQtMzNhYS00NGFiLThmMDQtMmIwMDg4YTIzMjI5IiwidCI6ImUyMjhjM2RmLTIzM2YtNDljMy05ZDc1LTFjZTI4NWI1OWM3OCJ9"
@@ -264,7 +264,7 @@ def show_confidence_analysis(probability):
         st.write("The model has moderate confidence. Consider verifying with additional client information.")
 
 def predictions_page():
-    st.markdown('<h1 style="color:green; font-size: 2.5em;">Hamper Return Prediction App</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="color:dark green; font-size: 2.5em;">Hamper Return Prediction App</h1>', unsafe_allow_html=True)
     #st.title("Hamper Return Prediction App")
     st.write("Enter details to predict if a client will return.")
     
@@ -375,7 +375,8 @@ def chatbox():
         </style>
     """, unsafe_allow_html=True)
 
-    st.title("IFSSA Retention Chatbot")
+    st.markdown('<h1 style="color:light orange; font-size: 2.5em;">IFSSA Retention Chatbot</h1>', unsafe_allow_html=True)
+    #st.title("IFSSA Retention Chatbot")
     st.write("Ask questions based on your datasets.")
 
     # Create context from dataset
