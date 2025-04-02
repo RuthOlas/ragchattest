@@ -350,16 +350,16 @@ def chatbox():
 
     # Function to generate response from the model
     def generate_response(prompt, context):
-    try:
-        model = genai.GenerativeModel('models/gemini-1.5-pro-latest')
-        # Remove explicit source references from context if necessary
-        cleaned_context = context.replace("PDF Content:", "").replace("Dataset 1 Preview:", "")
-        # Generate content based on the cleaned context
-        response = model.generate_content(f"{prompt}\n\nContext:\n{cleaned_context}")
-        return response.text
-    except Exception as e:
-        st.error(f"Error generating response: {e}")
-        return "Sorry, I couldn't process your request."
+        try:
+            model = genai.GenerativeModel('models/gemini-1.5-pro-latest')
+            # Remove explicit source references from context if necessary
+            cleaned_context = context.replace("PDF Content:", "").replace("Dataset 1 Preview:", "")
+            # Generate content based on the cleaned context
+            response = model.generate_content(f"{prompt}\n\nContext:\n{cleaned_context}")
+            return response.text
+        except Exception as e:
+            st.error(f"Error generating response: {e}")
+            return "Sorry, I couldn't process your request."
 
 st.markdown("""
     <style>
