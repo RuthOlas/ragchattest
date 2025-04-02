@@ -422,7 +422,7 @@ def main():
     <style>
     /* Change sidebar background color */
     .css-18e3th9 {
-        background-color: #4caf50;  /* Change this to your desired color */
+        background-color: green;  /* Change this to your desired color */
     }
     
     /* Change the title color of the sidebar */
