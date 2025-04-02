@@ -187,7 +187,7 @@ def show_shap_analysis(input_df, prediction, probability):
         tab1, tab2 = st.tabs(["Feature Importance", "Prediction Breakdown"])
         
         with tab1:
-            st.write("**Global Feature Importance**")
+            st.write("**Local Feature Importance**")
             fig, ax = plt.subplots(figsize=(10, 6))
             shap.summary_plot(shap_values, X_processed, feature_names=feature_names, plot_type="bar", show=False)
             plt.tight_layout()
@@ -376,10 +376,10 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
-
-st.markdown('<h1 style="color:lightorange; font-size: 2.5em;">IFSSA Retention Chatbot</h1>', unsafe_allow_html=True)
-# st.title("IFSSA Retention Chatbot")
-st.write("Ask questions based on your datasets.")
+    
+    #st.markdown('<h1 style="color:lightorange; font-size: 2.5em;">IFSSA Retention Chatbot</h1>', unsafe_allow_html=True)
+    # st.title("IFSSA Retention Chatbot")
+    #st.write("Ask questions based on your datasets.")
 
 # Create context from dataset
 context = "\nDataset 1 Preview:\n" + df1.head(5).to_string()
