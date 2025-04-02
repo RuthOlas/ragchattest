@@ -104,7 +104,9 @@ def preprocess_input(input_data):
     return input_df
 
 def exploratory_data_analysis():
-    st.markdown('<h1 style="color:light orange; font-size: 2.5em;">Hamper Collection Insights</h1>', unsafe_allow_html=True)
+    #st.markdown('<h1 style="color:light orange; font-size: 2.5em;">Hamper Collection Insights</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="color:#FFA500; font-size: 2.5em;">Hamper Collection Insights</h1>', unsafe_allow_html=True)
+
     #st.title("Hamper Collection Insights")
     st.subheader("Power BI Visualization")
     powerbi_url = "https://app.powerbi.com/view?r=eyJrIjoiMTE4Y2JiYWQtMzNhYS00NGFiLThmMDQtMmIwMDg4YTIzMjI5IiwidCI6ImUyMjhjM2RmLTIzM2YtNDljMy05ZDc1LTFjZTI4NWI1OWM3OCJ9"
@@ -407,7 +409,7 @@ def chatbox():
 def dashboard():
 
     # Set the title in green with a larger font size
-    st.markdown('<h1 style="color:green; font-size: 2.5em;">Hamper Return Prediction App</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="color:dark green; font-size: 2.5em;">Hamper Return Prediction App</h1>', unsafe_allow_html=True)
     header_image_url = "https://raw.githubusercontent.com/ChiomaUU/Client-Prediction/refs/heads/main/ifssa_2844cc71-4dca-48ae-93c6-43295187e7ca.avif"
     st.image(header_image_url, use_container_width=True)
 
