@@ -88,7 +88,7 @@ REQUIRED_COLUMNS = [
     "month",
     "total_visits",
     "avg_days_between_pickups",
-    "days_since_last_pickup"
+    "days_since_last_pickup",
     "distance_to_center",
     "dependents_qty", 
     "location_cluster"
