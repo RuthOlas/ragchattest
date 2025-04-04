@@ -64,7 +64,7 @@ except ImportError:
 @st.cache_resource
 def load_model():
     try:
-        model = joblib.load("model_top4.pkl")
+        model = joblib.load("model_top7.pkl")
         # st.success("✅ Model loaded successfully!")
         
         # Debug: Show model structure
@@ -82,13 +82,16 @@ def load_model():
 
 model = load_model()
 
-# Define only the top 5 features
+# Define only the top 7 features
 REQUIRED_COLUMNS = [
     
     "month",
     "total_visits",
     "avg_days_between_pickups",
     "days_since_last_pickup"
+    "distance_to_center",
+    "dependents_qty", 
+    "location_cluster"
 ]
 
 # Function to preprocess input data
@@ -226,9 +229,9 @@ def show_shap_analysis(input_df, prediction, probability):
             st.plotly_chart(fig, use_container_width=True)
             
             # Show feature values
-            st.write("**Feature Values for This Prediction:**")
-            feature_values = {f: v for f, v in zip(feature_names, X_processed[0])}
-            st.json(feature_values)
+            #st.write("**Feature Values for This Prediction:**")
+            #feature_values = {f: v for f, v in zip(feature_names, X_processed[0])}
+            #st.json(feature_values)
     
     except Exception as e:
         st.error(f"Error generating explanations: {str(e)}")
@@ -247,7 +250,7 @@ def show_confidence_analysis(probability):
             'axis': {'range': [0, 1]},
             'steps': [
                 {'range': [0, 0.3], 'color': "lightgray"},
-                {'range': [0.3, 0.7], 'color': "gray"},
+                {'range': [0.3, 0.7], 'color': "gray"},-
                 {'range': [0.7, 1], 'color': "darkgray"}],
             'threshold': {
                 'line': {'color': "red", 'width': 4},
@@ -275,27 +278,43 @@ def predictions_page():
     with col1:
         month = st.number_input("Month", min_value=1, max_value=12, step=1, value=6)
         total_visits = st.number_input("Total Visits", min_value=1, max_value=100, step=1, value=5)
-        
-    with col2:
         avg_days_between_pickups = st.number_input("Avg Days Between Pickups", 
                                                 min_value=1.0, max_value=100.0, 
                                                 step=0.1, value=30.0)
         days_since_last_pickup = st.number_input("Days Since Last Pickup", 
                                                 min_value=1.0, max_value=100.0, 
                                                 step=0.1, value=30.0)
+       
+        
+    with col2:
+
+        distance_to_center = st.number_input("Distance to Pickup Location in Km", 
+                                                min_value=0.1, max_value=20.0, 
+                                                step=0.1, value=5.0)
+        
+        dependents_qty = st.number_input("Number of Dependents", 
+                                                min_value=1.0, max_value=15.0, 
+                                                step=1.0, value=4.0)
+        location_cluster = st.number_input("Location Cluster", 
+                                                min_value=1.0, max_value=4.0, 
+                                                step=1.0, value=2.0)
     
     input_data = {
         "month": month,
         "total_visits": total_visits,
         "avg_days_between_pickups": avg_days_between_pickups,
-        "days_since_last_pickup": days_since_last_pickup
+        "days_since_last_pickup": days_since_last_pickup,
+        "distance_to_center": distance_to_center,
+        "dependents_qty": dependents_qty,
+        "location_cluster": location_cluster
+        
         
     }
     
     # Prediction button
     if st.button("Predict"):
         if model is None:
-            st.error("Model not loaded. Please check if 'model_top4.pkl' exists.")
+            st.error("Model not loaded. Please check if 'model_top7.pkl' exists.")
         else:
             input_df = preprocess_input(input_data)
             prediction = model.predict(input_df)
@@ -332,7 +351,6 @@ def predictions_page():
 def chatbox():
     # Function to extract text from a preloaded PDF
     
- 
     def extract_text_from_pdf(pdf_path):
         text = ""
         try:
@@ -366,6 +384,7 @@ def chatbox():
     #st.title("IFSSA Retention Chatbot")
     st.markdown('<h1 style="color:#E09963; font-size: 2.5em;">IFSSA Retention Chatbot</h1>', unsafe_allow_html=True)
     st.write("Ask questions based on your datasets.")
+    st.write("Some types of questions you can ask include: 'What are the preferred languages?', 'What are the age groups of clients?', 'What are the preferred contact methods?'")
 
     # Create context from dataset
     context = "\nDataset 1 Preview:\n" + df1.head(5).to_string()
@@ -449,9 +468,3 @@ if __name__ == "__main__":
     main()
 
 
-#st.markdown("""
-     #   <style>
-      #  .stApp {
-       #     #background-color: #ffffff;
-        #    background-color: #E09965
-         #   color: #333333;
