@@ -96,14 +96,14 @@ REQUIRED_COLUMNS = [
 
 # Function to preprocess input data
 def preprocess_input(input_data):
-    #input_df = pd.DataFrame([input_data])
+     #input_df = pd.DataFrame([input_data])
      input_df = input_df[REQUIRED_COLUMNS]
 
   
     # Ensure all required columns exist
-    for col in REQUIRED_COLUMNS:
-        if col not in input_df.columns:
-            input_df[col] = 0  # Set missing columns to 0
+     for col in REQUIRED_COLUMNS:
+          if col not in input_df.columns:
+               input_df[col] = 0  # Set missing columns to 0
 
     # Ensure the column order matches model training
     input_df = input_df[REQUIRED_COLUMNS]
