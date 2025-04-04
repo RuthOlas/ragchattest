@@ -106,11 +106,11 @@ def preprocess_input(input_data):
                input_df[col] = 0  # Set missing columns to 0
 
     # Ensure the column order matches model training
-    input_df = input_df[REQUIRED_COLUMNS]
-    return input_df
+     input_df = input_df[REQUIRED_COLUMNS]
+     return input_df
 
-    st.write("Model expects features:", model.n_features_in_)
-    st.write("Input data features:", input_df.shape[1])
+     st.write("Model expects features:", model.n_features_in_)
+     st.write("Input data features:", input_df.shape[1])
 
 
 def exploratory_data_analysis():
